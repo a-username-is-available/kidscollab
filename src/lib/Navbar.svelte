@@ -5,8 +5,8 @@
     <div class="flex-grow"></div>
 
     <div class="text-right text-black text-md font-normal flex gap-10">
-        <a class='hover:underline' href="/">navlink</a>
-        <a class='hover:underline' href="/">navlink</a>
-        <a class='hover:underline' href="/">navlink</a>
+        <a href="/">navlink</a>
+        <a href="/">navlink</a>
+        <a href="/">navlink</a>
     </div>
 </nav>

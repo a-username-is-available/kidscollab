@@ -13,3 +13,7 @@ body {
     height: 100%;
     background: #E6DFD9;
 }
+
+a {
+    @apply hover:underline
+}
