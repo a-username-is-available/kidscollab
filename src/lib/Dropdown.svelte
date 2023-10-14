@@ -1,12 +1,26 @@
 <script lang='ts'>
 	import { fly } from "svelte/transition";
     import { cubicOut, quadIn, quintIn } from 'svelte/easing';
+	import { onMount } from "svelte";
 
     export let open: boolean = false;
     export let category: string = '';
+    
+    let inTransition: boolean = false;
+    let inside: HTMLDivElement;
+    let margin: number = 0;
+
+    $: {
+        if (open) { 
+            inside.classList.remove('hidden');
+            margin = inside.getBoundingClientRect().height;
+        }
+    }
 
     // make this actually smooth later
     function inFlySmooth(node: HTMLElement, { duration, y }: { duration: number, y: number }) {
+        inTransition = true;
+
         return {
             duration,
             easing: cubicOut,
@@ -28,8 +42,13 @@
     { category }
 </button>
 
-{#if open}
-    <div class='ml-6 [&>a]:block [&>a]:leading-[1.1em] [&>a]:mb-1' in:inFlySmooth={{ duration: 500, y: -10 }}>
+
+<div class="relative">
+    <div class='ml-6 mr-1 [&>a]:block [&>a]:leading-[1.1em] [&>a]:mb-1 absolute transition-all-250ms
+        {open ? '': 'hidden -translate-y-3 opacity-0'}'
+        in:inFlySmooth={{ duration: 500, y: -10 }} bind:this={inside} >
         <slot />
     </div>
-{/if}
+</div>
+
+<div style='{open ? `margin-bottom: calc(${margin}px + 0.5rem)` : ''};' class='transition-all-250ms'></div>

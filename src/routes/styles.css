@@ -17,3 +17,7 @@ body {
 a {
     @apply hover:underline
 }
+
+.transition-all-250ms {
+    transition: all .25s ease-out;
+}
