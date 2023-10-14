@@ -7,11 +7,8 @@
         <div class="m-4">
             <h2 class="text-black text-2xl font-semibold">Articles</h2>
           
-            <Dropdown category='Category'>
-                <a href="/">Item #1</a>
-                <a href="/">Item with long name that goes to the next line</a>
-                <a href="/">Item #2</a>
-                <a href="/">Item #3</a>
+            <Dropdown category='KidsCollab'>
+                <a href="/kidscollab/test_item">Test Item</a>
             </Dropdown>
 
             <Dropdown category='Category 2'>
