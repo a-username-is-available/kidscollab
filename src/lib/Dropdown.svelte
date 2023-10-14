@@ -45,7 +45,7 @@
 
 <div class="relative">
     <div class='ml-6 mr-1 [&>a]:block [&>a]:leading-[1.1em] [&>a]:mb-1 absolute transition-all-250ms
-        {open ? '': 'hidden -translate-y-3 opacity-0'}'
+        {open ? '': '-translate-y-3 opacity-0'}'
         in:inFlySmooth={{ duration: 500, y: -10 }} bind:this={inside} >
         <slot />
     </div>
