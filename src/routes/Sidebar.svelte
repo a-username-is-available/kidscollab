@@ -1,9 +1,18 @@
-<script>
+<script lang='ts'>
+	import { onMount } from "svelte";
 	import Dropdown from "./Dropdown.svelte";
+
+    let container: HTMLElement; 
+    let width: number = 0;
+    
+    onMount(() => {
+        width = container.getBoundingClientRect().width;
+    });
 </script>
 
-<span class="h-full pr-[12px] overflow-hidden ml-1">
-    <aside class="h-[calc(100%+1.5rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black">
+<span bind:this={container} class="h-full pr-[12px] ml-1">
+    <aside style='width: {width}px;'
+           class="h-[calc(100%+1.5rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black fixed">
         <div class="m-4">
             <h2 class="text-black text-2xl font-semibold">Articles</h2>
           

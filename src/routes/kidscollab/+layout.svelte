@@ -1,5 +1,7 @@
-<div class='w-[60%]'>
-    <slot />
+<div class='w-[60%] h-full'>
+    <span class='h'>
+        <slot />
+    </span>
 </div>
 
 <style>
