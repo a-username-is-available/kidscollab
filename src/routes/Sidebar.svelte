@@ -11,7 +11,14 @@
                 <a href="/kidscollab/test_item">Test Item</a>
             </Dropdown>
 
-            <Dropdown category='Category 2'>
+            <Dropdown category='Category 2 (dummy)'>
+                <a href="/">Item #1</a>
+                <a href="/">Item with long name that goes to the next line</a>
+                <a href="/">Item #2</a>
+                <a href="/">Item #3</a>
+            </Dropdown>
+
+            <Dropdown category='Category 3 (dummy)'>
                 <a href="/">Item #1</a>
                 <a href="/">Item with long name that goes to the next line</a>
                 <a href="/">Item #2</a>
