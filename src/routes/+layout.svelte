@@ -1,6 +1,6 @@
 <script>
-	import Navbar from "$lib/Navbar.svelte";
-	import Sidebar from "$lib/Sidebar.svelte";
+	import Navbar from "./Navbar.svelte";
+	import Sidebar from "./Sidebar.svelte";
 	import './styles.css';
 </script>
 
