@@ -10,4 +10,9 @@
     div {
         font-family: 'Playfair Display', 'New York', 'Times New Roman', serif;
     } */
+
+    section p::before {
+        content: '';
+        margin-right: 1em;
+    }
 </style>

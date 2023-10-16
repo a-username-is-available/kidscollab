@@ -9,7 +9,7 @@
                 <h2 class="text-black text-2xl font-semibold">Articles</h2>
     
                 <Dropdown category='KidsCollab'>
-                    <a href="/kidscollab/test_item">Test Item</a>
+                    <a href="/content/kidscollab/test_item">Test Item</a>
                 </Dropdown>
     
                 <Dropdown category='Category 2 (dummy)'>
