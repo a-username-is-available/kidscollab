@@ -1,13 +1,11 @@
-import fs from 'node:fs/promises';
+const urlPrefix = 
+	'https://raw.githubusercontent.com/a-username-is-available/kidscollab-content/main/dist/kidscollab';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-	// if (params.slug.includes('/')) throw Error('slash cannot be in slug')
+	// if (params.slug.includes('..')) throw Error('slash cannot be in slug')
 
-	const content = await fs.readFile(
-		`./content/kidscollab/${params.slug}.md`,
-		{ encoding: 'utf-8' }
-	);
+	const content = await (await fetch(`${urlPrefix}/${params.slug}`)).text()
 	// console.log(content)
 
     return {
