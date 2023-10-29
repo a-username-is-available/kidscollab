@@ -1,6 +1,6 @@
 const url = 
     'https://raw.githubusercontent.com/a-username-is-available/kidscollab-content/main/dist/';
-const urlPrefix = 'kidscollab/';
+const urlPrefix = '';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
