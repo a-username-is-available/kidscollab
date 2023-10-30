@@ -6,7 +6,7 @@
     type file = string | directory;
     type content = file[];
 
-    const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/, '');
+    const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/g, '');
     console.log(data)
 </script>
 
