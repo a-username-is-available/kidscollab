@@ -34,7 +34,7 @@
     }
 </script>
 
-<button class='mb-1 mt-2 block' on:click={() => open = !open}>
+<button class='mb-1 block' on:click={() => open = !open}>
     <svg class="transition-all {open ? '' : '-rotate-90'} relative bottom-0.5 inline" 
          width="9" height="8" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M6 7.56768L1.50054 0L0 0.908555L6 11L12 0.908555L10.4995 0L6 7.56768Z" fill="black"/>
@@ -45,7 +45,7 @@
 
 <div class="relative">
     <div class='ml-6 mr-1 [&>a]:block [&>a]:leading-[1.1em] [&>a]:mb-1 absolute transition-all-250ms
-        {open ? '': '-translate-y-3 opacity-0 invisible'}'
+        {open ? '': '-translate-y-3 opacity-0 invisible'}' role="list"
         in:inFlySmooth={{ duration: 500, y: -10 }} bind:this={inside} >
         <slot />
     </div>
