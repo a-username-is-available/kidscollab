@@ -17,8 +17,8 @@
     span :global(h4) { @apply font-bold text-xl; }
     span :global(h5) { @apply font-bold text-lg; }
     span :global(h6) { @apply font-bold text-base; }
-    span :global(b) { @apply font-bold; }
-    span :global(i) { @apply italic; }
+    span :global(b), :global(strong) { @apply font-bold; }
+    span :global(i), :global(em), :global(cite) { @apply italic; }
     span :global(blockquote) { @apply p-3 mt-1 mb-2 rounded-md overflow-hidden bg-stone-300 box-border relative; }
     span :global(blockquote::before) { 
         content: '';
