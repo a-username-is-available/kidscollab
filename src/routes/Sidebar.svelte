@@ -7,7 +7,6 @@
     type content = file[];
 
     const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/g, '');
-    console.log(data)
 </script>
 
 <span class="h-[calc(100%+2rem)] overflow-y-clip">
