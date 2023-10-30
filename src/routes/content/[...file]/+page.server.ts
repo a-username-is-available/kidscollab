@@ -1,11 +1,12 @@
 const url = 
     'https://raw.githubusercontent.com/a-username-is-available/kidscollab-content/main/dist/';
-// const urlPrefix = 'kidscollab/';
+
+const fixName = (str: string) => str.replaceAll(/[ #?]/g, '');
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-    // console.log(params);
-    const content = await (await fetch(`${url}/${params.file}.html`)).text();
+    const content = await (await fetch(`${url}/${fixName(params.file)}.html`)).text();
+    console.log(fixName(params.file))
 
     return {
         content

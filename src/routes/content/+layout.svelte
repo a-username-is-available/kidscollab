@@ -11,9 +11,9 @@
         font-family: 'Playfair Display', 'New York', 'Times New Roman', serif;
     } */
 
-    span :global(h1) { @apply font-bold text-4xl; }
-    span :global(h2) { @apply font-bold text-3xl; }
-    span :global(h3) { @apply font-bold text-2xl; }
+    span :global(h1) { @apply font-bold text-4xl mb-2; }
+    span :global(h2) { @apply font-bold text-3xl mb-1.5; }
+    span :global(h3) { @apply font-bold text-2xl mb-1; }
     span :global(h4) { @apply font-bold text-xl; }
     span :global(h5) { @apply font-bold text-lg; }
     span :global(h6) { @apply font-bold text-base; }

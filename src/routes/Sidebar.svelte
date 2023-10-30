@@ -6,7 +6,7 @@
     type file = string | directory;
     type content = file[];
 
-    const toDash = (str: string) => str.replaceAll(' ', '-');
+    const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/, '');
     console.log(data)
 </script>
 
@@ -18,16 +18,16 @@
             <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
             {#each data.nav as file}
             {#if typeof file === 'string'}
-                <a href='/content/{toDash(file)}' >{file}</a>
+                <a href='/content/{fixName(file)}' >{file}</a>
             {:else}
                 <Accordion category={file.name}>
                     {#each file.content as innerFile}
                     {#if typeof innerFile === 'string'}
-                        <a href='/content/{toDash(file.name)}/{toDash(innerFile)}'>{innerFile}</a>
+                        <a href='/content/{fixName(file.name)}/{fixName(innerFile)}'>{innerFile}</a>
                     {:else}
                         <Accordion category={innerFile.name}>
                             {#each innerFile.content as innerInnerFile}
-                            <a href='/content/{toDash(file.name)}/{toDash(innerFile.name)}/{toDash(innerInnerFile)}' >
+                            <a href='/content/{fixName(file.name)}/{fixName(innerFile.name)}/{fixName(innerInnerFile)}' >
                                 {innerInnerFile}
                             </a>
                             {/each}
