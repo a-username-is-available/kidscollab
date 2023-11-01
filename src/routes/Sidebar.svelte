@@ -9,34 +9,34 @@
     const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/g, '');
 </script>
 
-    <div class="h-[calc(100%+4rem)] pr-[12px] ml-1">
-        <aside 
-            class="h-[calc(100vh+1rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black 
-            sticky bottom-0 top-4 p-4">
-            <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
-            {#each data.nav as file}
-            {#if typeof file === 'string'}
-                <a href='/content/{fixName(file)}' >{file}</a>
-            {:else}
-                <Accordion category={file.name}>
-                    {#each file.content as innerFile}
-                    {#if typeof innerFile === 'string'}
-                        <a href='/content/{fixName(file.name)}/{fixName(innerFile)}'>{innerFile}</a>
-                    {:else}
-                        <Accordion category={innerFile.name}>
-                            {#each innerFile.content as innerInnerFile}
-                            <a href='/content/{fixName(file.name)}/{fixName(innerFile.name)}/{fixName(innerInnerFile)}' >
-                                {innerInnerFile}
-                            </a>
-                            {/each}
-                        </Accordion>
-                    {/if}
-                    {/each}
-                </Accordion>
-            {/if}
-            {/each}
-        </aside>
-    </div>
+<div class="h-[calc(100%+4rem)] pr-[12px] ml-1">
+    <aside 
+        class="h-[calc(100vh+1rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black 
+        sticky bottom-0 top-4 p-4">
+        <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
+        {#each data.nav as file}
+        {#if typeof file === 'string'}
+            <a href='/content/{fixName(file)}' >{file}</a>
+        {:else}
+            <Accordion category={file.name}>
+                {#each file.content as innerFile}
+                {#if typeof innerFile === 'string'}
+                    <a href='/content/{fixName(file.name)}/{fixName(innerFile)}'>{innerFile}</a>
+                {:else}
+                    <Accordion category={innerFile.name}>
+                        {#each innerFile.content as innerInnerFile}
+                        <a href='/content/{fixName(file.name)}/{fixName(innerFile.name)}/{fixName(innerInnerFile)}' >
+                            {innerInnerFile}
+                        </a>
+                        {/each}
+                    </Accordion>
+                {/if}
+                {/each}
+            </Accordion>
+        {/if}
+        {/each}
+    </aside>
+</div>
 
 <style>
     aside {
