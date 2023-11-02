@@ -24,7 +24,7 @@
     <!-- space -->
     <div class="flex-grow"></div>
 
-    <div class="text-right text-black font-normal flex gap-10">
+    <div class="text-right text-black font-normal md:flex gap-10 sm:hidden">
         <a href="/">home</a>
         <a href="/about">about</a>
         <a href="//sites.google.com/view/kidscollab">other</a>

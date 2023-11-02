@@ -9,11 +9,16 @@
     const fixName = (str: string) => str.replaceAll(' ', '-').replaceAll(/[#?]/g, '');
 </script>
 
-<div class="h-[calc(100%+4rem)] pr-[12px] ml-1">
+<div id='floating-panel' class="h-[calc(100%+4rem)] pr-[12px] ml-1">
     <aside 
         class="h-[calc(100vh+1rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black 
         sticky bottom-0 top-4 p-4">
         <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
+        <div class="flex flex-col mb-1 md:hidden ">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </div>
+
         {#each data.nav as file}
         {#if typeof file === 'string'}
             <a href='/content/{fixName(file)}' >{file}</a>
@@ -44,7 +49,7 @@
         clip-path: inset(0 -16px 1.5rem 0);
     }
 
-    div {
+    #floating-panel {
         clip-path: inset(0 0 1.5rem 0);
     }
 
