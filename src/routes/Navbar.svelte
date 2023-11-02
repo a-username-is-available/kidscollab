@@ -19,7 +19,7 @@
         </svg>
     </button>    
 
-    <p class="text-black text-2xl font-semibold">LogoThingy</p>
+    <p class="text-black text-2xl font-semibold">KidsCollab</p>
 
     <!-- space -->
     <div class="flex-grow"></div>
@@ -27,7 +27,7 @@
     <div class="text-right text-black font-normal flex gap-10">
         <a href="/">home</a>
         <a href="/about">about</a>
-        <a href="/">idk what to put here</a>
+        <a href="//sites.google.com/view/kidscollab">other</a>
     </div>
 </nav>
 
