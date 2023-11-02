@@ -20,6 +20,6 @@
 			<Sidebar {data}/>
 		</div>
 
-		<div class="mb-2 lg:m-0 md:ml-20 md:mr-20 ml-2 mr-2 lg:blur-none {shown ? 'blur-sm' : ''}"> <slot /> </div>
+		<div class="grow mb-2 lg:m-0 md:ml-20 md:mr-20 ml-2 mr-2 lg:blur-none {shown ? 'blur-sm' : ''}"> <slot /> </div>
 	</div>
 </main>
