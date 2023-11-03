@@ -1,10 +1,16 @@
 <span>
-    <div class='flex flex-col h-screen justify-center overflow-x-clip'>
-        <h1 class='text-black text-9xl font-normal tracking-[-0.6875rem] -translate-y-5 mt-auto'>KidsCollab</h1>
-        <h4 class='text-black text-2xl -translate-y-9 translate-x-[0.57rem]'>Inspiring Youthful Creativity</h4>
+    <header class='flex flex-col justify-center md:items-start items-center h-screen overflow-x-clip m-auto'>
+        <h1 class='text-black font-semibold -translate-y-20 text-7xl tracking-tighter text-center
+          md:text-9xl md:tracking-[-0.6875rem] md:-translate-y-5 md:mt-auto md:font-normal md:text-left'>
+            KidsCollab
+        </h1>
+        <p class='text-black text-2xl -translate-y-20 text-center block
+          md:-translate-y-9 md:translate-x-[0.57rem] md:text-left'>
+            Inspiring Youthful Creativity
+        </p>
     
-        <div class='w-96 h-px border-2 border-black self-end mt-auto mb-28 mr-5'></div>
-    </div>
+        <div class='w-96 h-px border-2 border-black self-end mb-28 mr-5 mt-auto md:block hidden'></div>
+    </header>
     
     <div class='mr-10'>
         <h2 class="font-bold text-2xl">Acknowledgement Of Country</h2>
