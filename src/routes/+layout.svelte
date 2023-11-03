@@ -16,7 +16,7 @@
 	<div class='flex lg:justify-start justify-center gap-20 m-2 mb-0 h-max basis-5'>
 		<div class='shrink-0 overflow-y-clip z-10
 		  lg:m-0 lg:w-[max(20rem,26%)] lg:block lg:static lg:opacity-100 lg:translate-y-0
-		  fixed w-1/2 transition {shown ? '' : 'opacity-0 translate-y-5'}'>
+		  fixed w-[90%] transition {shown ? '' : 'opacity-0 translate-y-5'}'>
 			<Sidebar {data}/>
 		</div>
 
