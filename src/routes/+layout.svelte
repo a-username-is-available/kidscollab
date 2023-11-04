@@ -14,7 +14,7 @@
 <main class='h-full flex flex-col lg:text-base text-lg'>
 	<Navbar on:toggleMenu={toggleMenu}/>
 	<div class='flex lg:justify-start justify-center gap-20 m-2 mb-0 h-max basis-5'>
-		<div class='shrink-0 overflow-y-clip z-10
+		<div class='shrink-0 overflow-y-clip z-10 lg:visible
 		  lg:m-0 lg:w-[max(20rem,26%)] lg:block lg:static lg:opacity-100 lg:translate-y-0
 		  fixed md:w-[25rem] w-[90%] transition {shown ? '' : 'opacity-0 translate-y-5 invisible'}'>
 			<Sidebar {data}/>
