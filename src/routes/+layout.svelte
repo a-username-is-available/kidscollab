@@ -11,7 +11,7 @@
 	}
 </script>
 
-<main class='h-full flex flex-col lg:text-base text-lg'>
+<div class='h-full flex flex-col lg:text-base text-lg'>
 	<Navbar on:toggleMenu={toggleMenu}/>
 	<div class='flex lg:justify-start justify-center gap-20 m-2 mb-0 h-max basis-5'>
 		<div class='shrink-0 overflow-y-clip z-10 lg:visible
@@ -20,6 +20,6 @@
 			<Sidebar {data}/>
 		</div>
 
-		<div class="grow mb-2 lg:m-0 md:ml-20 md:mr-20 ml-2 mr-2 lg:blur-none {shown ? 'blur-sm' : ''}"> <slot /> </div>
+		<main class="grow mb-2 lg:m-0 md:ml-20 md:mr-20 ml-2 mr-2 lg:blur-none {shown ? 'blur-sm' : ''}"> <slot /> </main>
 	</div>
-</main>
+</div>

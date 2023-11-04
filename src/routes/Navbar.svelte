@@ -54,10 +54,6 @@
     .open :is(.top, .bottom) {
         y: 20;
     }
-
-    button:active {
-
-    }
     
     rect {
         transition: opacity 250ms ease-in-out;
