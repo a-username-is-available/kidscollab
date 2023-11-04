@@ -33,7 +33,7 @@
 
 <style>
     .open .top {
-        rotate: 45deg;
+        transform: rotate(45deg);
     }
     
     .open .middle {
@@ -41,11 +41,11 @@
     }
     
     .open .bottom {
-        rotate: -45deg;
+        transform: rotate(-45deg);
     }
     
     .top, .bottom {
-        transition-property: rotate, opacity, y;
+        transition-property: transform, opacity, y;
         transition-duration: 250ms;
         transition-timing-function: ease-in-out;
         transform-origin: center;
@@ -53,6 +53,10 @@
 
     .open :is(.top, .bottom) {
         y: 20;
+    }
+
+    button:active {
+
     }
     
     rect {
