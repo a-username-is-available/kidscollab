@@ -53,4 +53,8 @@
         display: block;
         width: max-content;
     }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
 </style>
