@@ -33,20 +33,26 @@
 
 <style>
     .open .top {
-        transform: translate(-13.75px, 13px) rotate(45deg);
+        rotate: 45deg;
     }
-
+    
     .open .middle {
         opacity: 0;
     }
     
     .open .bottom {
-        transform: translate(-13.75px, -13px) rotate(-45deg);
+        rotate: -45deg;
+    }
+    
+    .top, .bottom {
+        transition-property: rotate, opacity, y;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+        transform-origin: center;
     }
 
-    .top, .bottom {
-        transition: transform 250ms ease-in-out;
-        transform-origin: center;
+    .open :is(.top, .bottom) {
+        y: 20;
     }
     
     rect {
