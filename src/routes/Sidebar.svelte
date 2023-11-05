@@ -1,5 +1,4 @@
 <script lang='ts'>
-	import Accordion from "$lib/Accordion.svelte";
 	import LinkedAccordion from "$lib/LinkedAccordion.svelte";
     export let data: any; // svelte cant do type narrowing :/
 
@@ -14,11 +13,9 @@
         class="h-[calc(100vh+1rem)] bg-[#F5EEE9] rounded-3xl border-[5px] border-black 
         sticky bottom-0 top-4 p-4">
         <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
-        <div class="overflow-y-auto lg:h-[calc(100%-5rem)] h-[calc(100%-8rem)]">
-            <div class="flex flex-col mb-1 md:hidden ">
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-            </div>
+        <div class="overflow-y-auto lg:h-[calc(100%-5rem)] h-[calc(100%-8rem)]" role='list'>
+            <li class="list-none md:hidden"><a href="/">Home</a></li>
+            <li class="list-none md:hidden"><a href="/about">About</a></li>
 
             <LinkedAccordion data={data.nav}/>
         </div>
