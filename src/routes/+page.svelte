@@ -12,7 +12,7 @@
         <div class='w-96 h-px border-2 border-black self-end mb-28 mr-5 mt-auto md:block hidden'></div>
     </header>
     
-    <div class='mr-10'>
+    <div class='mr-10 mb-5'>
         <h2 class="font-bold text-2xl">Acknowledgement Of Country</h2>
         <p>
             The creators of this website would like to acknowledge the Aboriginal people of Australia
