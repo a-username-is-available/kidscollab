@@ -3,7 +3,7 @@
 </script>
 
 <header class='flex flex-col justify-center md:items-start items-center h-screen overflow-x-clip'>
-    <img class="-z-10 absolute lg:-top-10 md:top-8 md:block hidden left-auto right-0" src={highlight} alt="">
+    <img class="-z-10 absolute lg:-top-10 lg:h-2/3 md:h-5/6 md:top-8 md:block hidden left-auto right-0" src={highlight} alt="">
     <h1 class='text-black font-semibold -translate-y-20 text-7xl tracking-tighter text-center
       md:text-9xl md:tracking-[-0.6875rem] md:-translate-y-5 md:mt-auto md:font-normal md:text-left'>
         KidsCollab
