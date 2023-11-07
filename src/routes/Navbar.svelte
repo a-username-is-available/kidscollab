@@ -1,17 +1,9 @@
 <script>
-	import { createEventDispatcher } from "svelte";
-
-    const dispatch = createEventDispatcher();
-    let open = false;
-
-    function toggleMenu() {
-       dispatch('toggleMenu');
-       open = !open;
-    }
+    export let open = false;
 </script>
 
 <nav class='flex gap-3 p-5 items-center mr-2 ml-2'>
-    <button class='lg:hidden inline-block {open ? 'open' : ''}' on:click={toggleMenu}>
+    <button class='lg:hidden inline-block {open ? 'open' : ''}' on:click={() => open = !open}>
         <svg viewBox="0 0 60 52" width="20" height="20">
             <rect class="top" rx="5" y="0" width="55" height="7"></rect>
             <rect class="middle" rx="5" y="20" width="55" height="7"></rect>
