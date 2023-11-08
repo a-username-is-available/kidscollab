@@ -2,7 +2,7 @@
     export let open = false;
 </script>
 
-<header class='flex gap-3 p-5 items-center mr-2 ml-2'>
+<header class='z-10 flex gap-3 p-5 items-center mr-2 ml-2'>
     <button class='lg:hidden inline-block {open ? 'open' : ''}'  on:click={() => open = !open}
       aria-expanded={open} aria-label='Open Sidebar'>
         <svg viewBox="0 0 60 52" width="20" height="20">
