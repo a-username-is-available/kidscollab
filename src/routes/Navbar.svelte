@@ -2,8 +2,9 @@
     export let open = false;
 </script>
 
-<nav class='flex gap-3 p-5 items-center mr-2 ml-2'>
-    <button class='lg:hidden inline-block {open ? 'open' : ''}' on:click={() => open = !open}>
+<header class='flex gap-3 p-5 items-center mr-2 ml-2'>
+    <button class='lg:hidden inline-block {open ? 'open' : ''}'  on:click={() => open = !open}
+      aria-expanded={open} aria-label='Open Sidebar'>
         <svg viewBox="0 0 60 52" width="20" height="20">
             <rect class="top" rx="5" y="0" width="55" height="7"></rect>
             <rect class="middle" rx="5" y="20" width="55" height="7"></rect>
@@ -16,12 +17,14 @@
     <!-- space -->
     <div class="flex-grow"></div>
 
-    <div class="text-right text-black font-normal md:flex gap-10 hidden">
-        <a href="/">home</a>
-        <a href="/about">about</a>
-        <a href="//sites.google.com/view/kidscollab">other</a>
-    </div>
-</nav>
+    <nav aria-label="General">
+        <ul class="text-right text-black font-normal md:flex gap-10 hidden">
+            <li><a href="/">home</a></li>
+            <li><a href="/about">about</a></li>
+            <li><a href="//sites.google.com/view/kidscollab">other</a></li>
+        </ul>
+    </nav>
+</header>
 
 <style>
     .open .top {
