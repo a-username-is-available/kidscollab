@@ -9,20 +9,10 @@
 
 {#each data as file}
     {#if typeof file === 'string'}
-        <li>
-            <a class='block w-max' href='/content/{pathPrefix.join('/')}/{fixName(file)}'>{file}</a>
-        </li>
+        <a class='block w-max mt-1' href='/content/{pathPrefix.join('/')}/{fixName(file)}'>{file}</a>
     {:else}
-        <li>
-            <Accordion category={file.name}>
-                <svelte:self pathPrefix={[...pathPrefix, fixName(file.name)]} data={file.content}/>
-            </Accordion>
-        </li>
+        <Accordion category={file.name}>
+            <svelte:self pathPrefix={[...pathPrefix, fixName(file.name)]} data={file.content}/>
+        </Accordion>
     {/if}
 {/each}
-
-<style>
-    li {
-        list-style: none;
-    }
-</style>
