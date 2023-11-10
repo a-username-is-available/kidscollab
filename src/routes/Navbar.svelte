@@ -21,6 +21,7 @@
         <ul class="text-right text-black font-normal md:flex gap-10 hidden">
             <li><a href="/">home</a></li>
             <li><a href="/about">about</a></li>
+            <li><a href="/you">you</a></li>
             <li><a href="//sites.google.com/view/kidscollab">other</a></li>
         </ul>
     </nav>

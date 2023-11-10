@@ -13,9 +13,10 @@
       bottom-0 top-4 p-4 lg:h-[calc(min(100vh,100%)+1.5rem)] h-screen" 
       aria-label="Article Directory (for navigating files)" role='navigation'>
         <h2 class="text-black text-2xl mb-2 font-semibold">Articles</h2>
-        <div class="overflow-y-auto lg:h-[calc(100%-5rem)] h-[calc(100%-8rem)]" role='list'>
-            <li class="list-none md:hidden"><a href="/">Home</a></li>
-            <li class="list-none md:hidden"><a href="/about">About</a></li>
+        <div class="overflow-y-auto lg:h-[calc(100%-5rem)] h-[calc(100%-8rem)]">
+            <a class="md:hidden block" href="/">Home</a>
+            <a class="md:hidden block" href="/about">About</a>
+            <a class="md:hidden block" href="/you">You</a>
 
             <LinkedAccordion data={data.nav}/>
         </div>
