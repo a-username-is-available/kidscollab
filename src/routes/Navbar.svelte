@@ -29,7 +29,7 @@
 
     <p class="text-gray-400">|</p>
 
-    <Button type="filled" href="/you">you</Button>
+    <Button type="filled" href="/you">Sign in</Button>
 </header>
 
 <style>

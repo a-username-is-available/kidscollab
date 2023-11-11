@@ -1,11 +1,21 @@
 <script lang='ts'>
-    export let href: string | undefined;
+    export let href: string | null = null;
+    export let click: () => any = () => {};
+
     export let type: 'outline' | 'filled';
 </script>
 
 
 {#if href}
-    <a class="hover:no-underline py-1 px-6 bg-black rounded-full text-white" {href}> <slot></slot> </a>
+    <a {href} class="hover:no-underline py-1 px-6 rounded-full transition-colors border-2 border-black
+      {type === 'outline' ?  '' : 'text-white bg-black'}"> <slot></slot> </a>
 {:else}
-    <button class="py-1 px-6 bg-black rounded-full text-white"> <slot></slot> </button>
+    <button on:click={click} class="py-1 px-6 rounded-full transition-colors border-2 border-black
+      {type === 'outline' ?  '' : 'text-white bg-black'}"> <slot></slot> </button>
 {/if}
+
+<style>
+    a, button {
+        transition-duration: 250ms;
+    }
+</style>
