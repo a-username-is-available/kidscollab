@@ -1,8 +1,10 @@
 <script>
+	import Button from "$lib/components/Button.svelte";
+
     export let open = false;
 </script>
 
-<header class='z-10 flex gap-3 p-5 items-center mr-2 ml-2'>
+<header class='z-10 flex gap-5 p-5 items-center mr-2 ml-2'>
     <button class='lg:hidden inline-block {open ? 'open' : ''}'  on:click={() => open = !open}
       aria-expanded={open} aria-label='Open Sidebar'>
         <svg viewBox="0 0 60 52" width="20" height="20">
@@ -21,10 +23,13 @@
         <ul class="text-right text-black font-normal md:flex gap-10 hidden">
             <li><a href="/">home</a></li>
             <li><a href="/about">about</a></li>
-            <li><a href="/you">you</a></li>
             <li><a href="//sites.google.com/view/kidscollab">other</a></li>
         </ul>
     </nav>
+
+    <p class="text-gray-400">|</p>
+
+    <Button type="filled" href="/you">you</Button>
 </header>
 
 <style>

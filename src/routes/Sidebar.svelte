@@ -1,11 +1,6 @@
 <script lang='ts'>
-	import LinkedAccordion from "$lib/LinkedAccordion.svelte";
-    export let data: any; // svelte cant do type narrowing :/
-
-    type directory = { name: string, content: content };
-    type file = string | directory;
-    type content = file[];
-
+	import LinkedAccordion from "./LinkedAccordion.svelte";
+    export let data: any;
 </script>
 
 <div id='sticky-area' class="h-[calc(100%+2rem)] pr-[12px] ml-1">
@@ -16,7 +11,6 @@
         <div class="overflow-y-auto lg:h-[calc(100%-5rem)] h-[calc(100%-8rem)]">
             <a class="md:hidden block" href="/">Home</a>
             <a class="md:hidden block" href="/about">About</a>
-            <a class="md:hidden block" href="/you">You</a>
 
             <LinkedAccordion data={data.nav}/>
         </div>

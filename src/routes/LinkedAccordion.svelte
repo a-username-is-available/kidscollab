@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import Accordion from "./Accordion.svelte";
+	import Accordion from "$lib/components/Accordion.svelte";
 
     type file = {
         uuid: string,
