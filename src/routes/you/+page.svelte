@@ -12,8 +12,14 @@ import Switch from "$lib/components/Switch.svelte";
 
     <Panel>
         <form class="flex flex-col gap-2" action="/signup">
-            <input class="bg-transparent outline-none border-2 border-black rounded-full w-full px-2 py-1" name="username" placeholder="username">
-            <input class="bg-transparent outline-none border-2 border-black rounded-full w-full px-2 py-1" name="password" placeholder="password" type="password">
+            <input class="bg-transparent outline-none border-2 border-black rounded-full w-full px-3 py-1" name="username" placeholder="username">
+            <input class="bg-transparent outline-none border-2 border-black rounded-full w-full px-3 py-1" name="password" placeholder="password" type="password">
         </form>
     </Panel>
 </div>
+
+<style lang='postcss'>
+    input::placeholder {
+        @apply text-darken;
+    }
+</style>

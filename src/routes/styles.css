@@ -22,6 +22,6 @@ a {
     transition: all .25s ease-out;
 }
 
-.shadow {
-    box-shadow: 11px 12px 0px 0px #000;
+.bold-shadow {
+    box-shadow: 12px 12px 0px 0px #000;
 }

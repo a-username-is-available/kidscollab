@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "darken": "#B2ABA5",
         "neutral": "#E6DFD9",
         "lighten": "#F5EEE9",
       }
