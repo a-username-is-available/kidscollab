@@ -21,3 +21,7 @@ a {
 .transition-all-250ms {
     transition: all .25s ease-out;
 }
+
+.shadow {
+    box-shadow: 11px 12px 0px 0px #000;
+}
