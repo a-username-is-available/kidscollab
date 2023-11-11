@@ -5,7 +5,7 @@
 </script>
 
 <div class='lg:w-2/3 w-full'>
-    <h1 class="text-black text-4xl font-bold">You</h1>
+    <h1 class="text-black text-4xl font-bold mb-2">You</h1>
 
     <Switch options={['Sign In', 'Sign Up']} {selected}/>
 
