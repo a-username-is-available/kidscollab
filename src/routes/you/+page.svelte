@@ -3,37 +3,67 @@
     import Panel from "$lib/components/Panel.svelte";
     import Switch from "$lib/components/Switch.svelte";
 
-    export let data: { supabase: any };
-    const { supabase } = data;
+    import { PUBLIC_SUPABASE_KEY } from '$env/static/public';
+    import { createClient } from '@supabase/supabase-js';
 
     let selected = 0;
     let email = '';
     let password = '';
 
-    async function submit() {
-        fetch('/you', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }), // body data type must match "Content-Type" header
-        })
+    const supabaseUrl = 'https://inaebpnhptdkioictxuc.supabase.co';
+    const supabaseKey = PUBLIC_SUPABASE_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    async function signUp() {
+        const { data, error } = await supabase.auth.signUp({ email, password });
+    }
+
+    async function signIn() {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error?.message === 'Invalid login credentials') {
+            // deal with it later
+        }
+    }
+
+    async function signOut() {
+        const { error } = await supabase.auth.signOut();
+    }
+
+    async function log() {
+        const { data } = await supabase.auth.getUser();
+        console.log(data);
     }
 </script>
 
-<div class='lg:w-2/3 w-full'>
+<div class='lg:w-2/3 w-full flex flex-col h-full pb-4'>
     <h1 class="text-black text-4xl font-bold mb-2">You</h1>
 
-    <Switch options={['Sign In', 'Sign Up']} {selected}/>
+    <Switch options={['Sign in', 'Sign up']} bind:selected={selected}/>
 
     <Panel>
-        <form class="flex flex-col gap-2" on:submit|preventDefault={submit}>
-            <input bind:value={email} name="email" placeholder="email" type="email">
-            <input bind:value={password} name="password" placeholder="password" type="password">
+        {#if selected === 0}
+            <!-- Sign in -->
+            <form class="flex flex-col gap-2" on:submit|preventDefault={signIn}>
+                <input bind:value={email} name="email" placeholder="email" type="email">
+                <input bind:value={password} name="password" placeholder="password" type="password">
 
-            <div class="self-start"><Button type='filled'>Submit</Button></div>
-        </form>
+                <div class="self-start"><Button type='filled'>Sign in</Button></div>
+            </form>
+        {:else}
+            <!-- Sign up -->
+            <form class="flex flex-col gap-2" on:submit|preventDefault={signUp}>
+                <input bind:value={email} name="email" placeholder="email" type="email">
+                <input bind:value={password} name="password" placeholder="password" type="password">
+
+                <div class="self-start"><Button type='filled'>Sign up for KidsCollab</Button></div>
+            </form>
+        {/if}
     </Panel>
+
+    <div class="self-start mt-auto">
+        <Button type='outline' click={signOut}> Sign Out </Button>
+        <Button type='outline' click={log}> Log Data (Dev) </Button>
+    </div>
 </div>
 
 <style lang='postcss'>

@@ -5,11 +5,11 @@
     export let options: string[];
     export let selected: number;
 
-    const select = (i: number) => selected = i;
+    const select = (i: number) => { selected = i; };
 </script>
 
 <Pill>
-    {#each options as option, i (i)}
+    {#each options as option, i}
         <Button type={selected === i ? 'filled' : 'outline'} click={() => select(i)}>
             {option}
         </Button>
