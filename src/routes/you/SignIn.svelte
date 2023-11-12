@@ -15,15 +15,14 @@
     }
 </script>
 
- <!-- Sign in -->
- <form class="flex flex-col gap-2" on:submit|preventDefault={signIn}>
+<form class="flex flex-col gap-2" on:submit|preventDefault={signIn}>
     <label class="mt-1 leading-3" for="email">Email</label>
     <input bind:value={email} name="email" placeholder="email" type="email">
     <label class="mt-3 leading-3" for="email">Password</label>
     <input bind:value={password} name="password" placeholder="password" type="password">
 
     <div class="self-start"><Button type='filled'>Sign in</Button></div>
- </form>
+</form>
 
 <style lang='postcss'>
     input::placeholder {
