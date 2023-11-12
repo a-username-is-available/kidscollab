@@ -1,4 +1,6 @@
 <script lang='ts'>
+    import SignUp from './SignUp.svelte';
+    import SignIn from './SignIn.svelte';
 	import Button from "$lib/components/Button.svelte";
     import Panel from "$lib/components/Panel.svelte";
     import Switch from "$lib/components/Switch.svelte";
@@ -44,31 +46,9 @@
 
     <Panel>
         {#if selected === 0}
-            <!-- Sign in -->
-            <form class="flex flex-col gap-2" on:submit|preventDefault={signIn}>
-                <label class="mt-1 leading-3" for="email">Email</label>
-                <input bind:value={email} name="email" placeholder="email" type="email">
-                <label class="mt-3 leading-3" for="email">Password</label>
-                <input bind:value={password} name="password" placeholder="password" type="password">
-
-                <div class="self-start"><Button type='filled'>Sign in</Button></div>
-            </form>
+            <SignIn {supabase}></SignIn>
         {:else}
-            <!-- Sign up -->
-            <form class="flex flex-col gap-2" on:submit|preventDefault={signUp}>
-                <label class="mt-1 leading-3" for="email">Email</label>
-                <input bind:value={email} name="email" placeholder="email" type="email">
-                <label class="mt-3 leading-3" for="password">Password</label>
-                <input bind:value={password} name="password" placeholder="password" type="password">
-                <label class="mt-3 leading-3" for="passwordConfirm">Confirm your password</label>
-                <input bind:value={passwordConfirm} name="passwordConfirm" placeholder="confirm your password" type="password">
-
-                {#if password !== passwordConfirm}
-                    <p class="text-red-500">Passwords do not match</p>
-                {/if}
-
-                <div class="self-start"><Button type='filled'>Sign up for KidsCollab</Button></div>
-            </form>
+            <SignUp {supabase}></SignUp>
         {/if}
     </Panel>
 
