@@ -1,9 +1,9 @@
-<script lang='ts'>
+<script lang="ts">
     import SignUp from './SignUp.svelte';
     import SignIn from './SignIn.svelte';
-	import Button from "$lib/components/Button.svelte";
-    import Panel from "$lib/components/Panel.svelte";
-    import Switch from "$lib/components/Switch.svelte";
+    import Button from '$lib/components/Button.svelte';
+    import Panel from '$lib/components/Panel.svelte';
+    import Switch from '$lib/components/Switch.svelte';
 
     import { PUBLIC_SUPABASE_KEY } from '$env/static/public';
     import { createClient } from '@supabase/supabase-js';
@@ -39,26 +39,34 @@
     }
 </script>
 
-<div class='lg:w-2/3 w-full flex flex-col h-full pb-4'>
+<div class="lg:w-2/3 w-full flex flex-col h-full pb-4">
     <h1 class="text-black text-4xl font-bold mb-2">You</h1>
 
-    <Switch options={['Sign in', 'Sign up']} bind:selected={selected}/>
+    <Switch options={['Sign in', 'Sign up']} bind:selected />
 
     <Panel>
         {#if selected === 0}
-            <SignIn {supabase}></SignIn>
+            <SignIn {supabase} />
         {:else}
-            <SignUp {supabase}></SignUp>
+            <SignUp {supabase} />
         {/if}
+<!-- 
+        <div
+            id="hcaptcha"
+            class="h-captcha"
+            data-sitekey={PUBLIC_CAPTCHA_KEY} -->
+            <!-- /> -->
+            <!-- data-theme="dark"
+            data-size="invisible" -->
     </Panel>
 
     <div class="self-start mt-auto">
-        <Button type='outline' click={signOut}> Sign Out </Button>
-        <Button type='outline' click={log}> Log Data (Dev) </Button>
+        <Button type="outline" click={signOut}>Sign Out</Button>
+        <Button type="outline" click={log}>Log Data (Dev)</Button>
     </div>
 </div>
 
-<style lang='postcss'>
+<style lang="postcss">
     input::placeholder {
         @apply text-darken;
     }

@@ -1,6 +1,7 @@
 <script lang='ts'>
 	import Button from "$lib/components/Button.svelte";
 	import type { SupabaseClient } from "@supabase/supabase-js";
+    import Captcha from "./Captcha.svelte";
 
     let email = '';
     let password = '';
@@ -21,6 +22,8 @@
     <label class="mt-3 leading-3" for="email">Password</label>
     <input bind:value={password} name="password" placeholder="password" type="password">
 
+    <Captcha />
+    
     <div class="self-start"><Button type='filled'>Sign in</Button></div>
 </form>
 
