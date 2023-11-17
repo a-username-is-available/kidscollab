@@ -5,11 +5,17 @@
 
     let email = '';
     let password = '';
+    let token: string | null = null;
 
     export let supabase: SupabaseClient;
 
     async function signIn() {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (!token) return;
+        const { data, error } = await supabase.auth.signInWithPassword({ 
+           email,
+           password,
+           options: { captchaToken: token },
+        });
         if (error?.message === 'Invalid login credentials') {
             // deal with it later
         }
@@ -22,7 +28,7 @@
     <label class="mt-3 leading-3" for="email">Password</label>
     <input bind:value={password} name="password" placeholder="password" type="password">
 
-    <Captcha />
+    <Captcha bind:token/>
     
     <div class="self-start"><Button type='filled'>Sign in</Button></div>
 </form>
