@@ -4,15 +4,9 @@
     import Button from '$lib/components/Button.svelte';
     import Panel from '$lib/components/Panel.svelte';
     import Switch from '$lib/components/Switch.svelte';
-
-    import { PUBLIC_SUPABASE_KEY } from '$env/static/public';
-    import { createClient } from '@supabase/supabase-js';
+    import { supabase } from '$lib/supabaseClient';
 
     let selected = 0;
-
-    const supabaseUrl = 'https://inaebpnhptdkioictxuc.supabase.co';
-    const supabaseKey = PUBLIC_SUPABASE_KEY;
-    const supabase = createClient(supabaseUrl, supabaseKey);
 
     async function signOut() {
         const { error } = await supabase.auth.signOut();
@@ -24,31 +18,29 @@
     }
 </script>
 
-<div class="lg:w-2/3 w-full flex flex-col h-full pb-4">
-    <h1 class="text-black text-4xl font-bold mb-2">You</h1>
+<div class="lg:w-2/3 w-full flex flex-col h-full pb-4 gap-2">
+    <h1 class="text-4xl font-bold mb-2">You</h1>
+    {#await supabase.auth.getUser() then { data }}
+        {#if data.user}
+            <h2 class="text-3xl font-bold mb-1.5">Favourited Articles</h2>
+            <ul>
+                <li><a href="/content/Nay-Farn">Nay Farn</a></li>
+            </ul>      
 
-    <Switch options={['Sign in', 'Sign up']} bind:selected />
-
-    <Panel>
-        {#if selected === 0}
-            <SignIn {supabase} />
+            <div class="mt-auto self-start"><Button type="outline" click={signOut}>Sign Out</Button></div>
         {:else}
-            <SignUp {supabase} />
-        {/if}
-    </Panel>
+            <Switch options={['Sign in', 'Sign up']} bind:selected />
 
-    <div class="self-start mt-auto">
-        <Button type="outline" click={signOut}>Sign Out</Button>
-        <Button type="outline" click={log}>Log Data (Dev)</Button>
-    </div>
+            <Panel>
+                {#if selected === 0}
+                    <SignIn {supabase} />
+                {:else}
+                    <SignUp {supabase} />
+                {/if}
+            </Panel>
+        {/if}
+    {/await}
+    
+    <div class="self start"><Button type="outline" click={log}>Log Data (Dev)</Button></div>
 </div>
 
-<style lang="postcss">
-    input::placeholder {
-        @apply text-darken;
-    }
-
-    input {
-        @apply bg-transparent outline-none border-2 border-black rounded-full w-full px-3 py-1;
-    }
-</style>

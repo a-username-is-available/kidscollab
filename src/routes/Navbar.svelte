@@ -1,7 +1,9 @@
 <script>
 	import Button from "$lib/components/Button.svelte";
+    import { supabase } from "$lib/supabaseClient";
 
     export let open = false;
+    // let signedIn = supabase.auth.getUser();
 </script>
 
 <header class='z-10 flex gap-5 p-5 items-center mr-2 ml-2'>
@@ -27,9 +29,13 @@
         </ul>
     </nav>
 
-    <p class="text-gray-400">|</p>
+    <p class="text-gray-400 lg:block none">|</p>
 
-    <Button type="filled" href="/you">Sign in</Button>
+    <Button type="filled" href="/you">
+        {#await supabase.auth.getUser() then { data }}
+            {#if data.user} You {:else} Sign in {/if}
+        {/await}
+    </Button>
 </header>
 
 <style>
