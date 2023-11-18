@@ -1,13 +1,16 @@
-<script>
+<script lang='ts'>
     import Like from "./Like.svelte";
+    import { page } from "$app/stores";
 
+    const id: string = $page.data.id;
 </script>
+
 <div class='lg:w-2/3 w-full'>
     <div class='mb-2'>
-        <Like />
+        <Like {id}/>
     </div>
     <div id="content">
-        <slot />
+        <slot/>
     </div>
 </div>
 
