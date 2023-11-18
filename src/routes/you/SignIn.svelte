@@ -6,6 +6,7 @@
     let email = '';
     let password = '';
     let token: string | null = null;
+    let invalid = false;
 
     export let supabase: SupabaseClient;
 
@@ -17,7 +18,7 @@
            options: { captchaToken: token },
         });
         if (error?.message === 'Invalid login credentials') {
-            // deal with it later
+            invalid = true;
         }
     }
 </script>
@@ -27,6 +28,10 @@
     <input bind:value={email} name="email" placeholder="email" type="email">
     <label class="mt-3 leading-3" for="email">Password</label>
     <input bind:value={password} name="password" placeholder="password" type="password">
+
+    {#if invalid}
+        <p class="text-red-500">Password/username invalid</p>
+    {/if}
 
     <Captcha bind:token/>
     

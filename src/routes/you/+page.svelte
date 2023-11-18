@@ -9,25 +9,10 @@
     import { createClient } from '@supabase/supabase-js';
 
     let selected = 0;
-    let email = '';
-    let password = '';
-    let passwordConfirm = '';
 
     const supabaseUrl = 'https://inaebpnhptdkioictxuc.supabase.co';
     const supabaseKey = PUBLIC_SUPABASE_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
-
-    async function signUp() {
-        if (password !== passwordConfirm) return;
-        const { data, error } = await supabase.auth.signUp({ email, password });
-    }
-
-    async function signIn() {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error?.message === 'Invalid login credentials') {
-            // deal with it later
-        }
-    }
 
     async function signOut() {
         const { error } = await supabase.auth.signOut();
@@ -50,14 +35,6 @@
         {:else}
             <SignUp {supabase} />
         {/if}
-<!-- 
-        <div
-            id="hcaptcha"
-            class="h-captcha"
-            data-sitekey={PUBLIC_CAPTCHA_KEY} -->
-            <!-- /> -->
-            <!-- data-theme="dark"
-            data-size="invisible" -->
     </Panel>
 
     <div class="self-start mt-auto">
