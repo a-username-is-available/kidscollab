@@ -29,7 +29,7 @@
         </ul>
     </nav>
 
-    <p class="text-gray-400 lg:block none">|</p>
+    <p class="text-gray-400 lg:block hidden">|</p>
 
     <Button type="filled" href="/you">
         {#await supabase.auth.getUser() then { data }}
