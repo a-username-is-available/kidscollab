@@ -1,23 +1,26 @@
-<script lang='ts'>
+<script lang="ts">
     import Button from '$lib/components/Button.svelte';
     import { supabase } from '$lib/supabaseClient';
 
-    let count = 0;
-    let liked = false;
     export let id: string;
 
+    let liked = false;
+    let count = 0;
+    supabase.from('article').select('likes').eq('id', id).then(a => {
+        count = a?.data?.[0]?.likes ?? 0;
+    });
+
     function toggle() {
-        if (liked) count-- 
+        if (liked) count--;
         else count++;
         liked = !liked;
 
         setTimeout(async () => {
-            let { data, error } = await supabase
+            const { data, error } = await supabase
                 .from('article')
-                .select('likes')
-                .eq('id', id);
-            console.log(error);
-            console.log(data);
+                .upsert([{ id, likes: count }])
+                .select();
+            console.log(data, error);
         }, 1000);
     }
 </script>
@@ -40,5 +43,7 @@
         {/if}
     </svg>
     |
-    <span class="min-w-[1.2rem] text-left"> {count} </span>
+    <span class="min-w-[1.2rem] text-left">
+        {count}
+    </span>
 </Button>
