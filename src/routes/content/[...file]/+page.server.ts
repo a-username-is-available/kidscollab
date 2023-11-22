@@ -13,9 +13,9 @@ export async function load({ params }) {
     const id = file.substring(0, newLineIndex);
     const content = file.substring(newLineIndex);
 
-    const { data, error } = await supabase.from('article').select('likes').eq('id', id);
-    if (error) return { content: `<em>Something went wrong while getting the like count!</em>\n${content}`, id: "null" };
-    const likes = data[0];
+    // const { data, error } = await supabase.from('article').select('likes').eq('id', id);
+    // if (error) return { content: `<em>Something went wrong while getting the like count!</em>\n${content}`, id: "null" };
+    // const likes = data[0];
 
     return {
         id,

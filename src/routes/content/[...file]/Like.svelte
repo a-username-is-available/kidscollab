@@ -6,9 +6,6 @@
 
     let liked = false;
     let count = 0;
-    supabase.from('article').select('likes').eq('id', id).then(a => {
-        count = a?.data?.[0]?.likes ?? 0;
-    });
 
     function toggle() {
         if (liked) count--;
@@ -16,11 +13,22 @@
         liked = !liked;
 
         setTimeout(async () => {
+            const user = await supabase.auth.getUser();
+            if (user.error) return;
+
             const { data, error } = await supabase
-                .from('article')
-                .upsert([{ id, likes: count }])
-                .select();
-            console.log(data, error);
+                .from('review')
+                .insert([{ user_id: user.data.user.id, article_id: id, like_status: liked }]);
+
+            if (error?.code !== "23505") return;
+
+            const profile = await supabase
+                .from('review')
+                .update([{ like_status: liked }])
+                .eq('user_id', user.data.user.id)
+                .eq('article_id', id);
+            
+            console.log(profile)
         }, 1000);
     }
 </script>
