@@ -3,9 +3,22 @@
     import { supabase } from '$lib/supabaseClient';
 
     export let id: string;
-
+    export let count = 0;
     let liked = false;
-    let count = 0;
+
+    supabase.auth.getUser().then((user) => {
+        if (user.error) return;
+        user = user;
+        return supabase
+            .from('review')
+            .select('user_id, article_id')
+            .eq('article_id', id)
+            .eq('user_id', user.data.user.id)
+            .limit(1);
+    }).then(row => {
+        console.log(row)
+        if (row?.data?.length !== 0) liked = true;
+    });
 
     function toggle() {
         if (liked) count--;
@@ -14,21 +27,21 @@
 
         setTimeout(async () => {
             const user = await supabase.auth.getUser();
-            if (user.error) return;
+            if (!user || user.error) return;
 
             const { data, error } = await supabase
                 .from('review')
                 .insert([{ user_id: user.data.user.id, article_id: id, like_status: liked }]);
 
-            if (error?.code !== "23505") return;
+            if (error?.code !== '23505') return;
 
             const profile = await supabase
                 .from('review')
                 .update([{ like_status: liked }])
                 .eq('user_id', user.data.user.id)
                 .eq('article_id', id);
-            
-            console.log(profile)
+
+            console.log(profile);
         }, 1000);
     }
 </script>

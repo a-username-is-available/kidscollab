@@ -1,4 +1,4 @@
-import { supabase } from "$lib/supabaseClient";
+import { supabase } from '$lib/supabaseClient';
 
 const url =
     'https://raw.githubusercontent.com/a-username-is-available/kidscollab-content/main/dist/';
@@ -13,12 +13,23 @@ export async function load({ params }) {
     const id = file.substring(0, newLineIndex);
     const content = file.substring(newLineIndex);
 
-    // const { data, error } = await supabase.from('article').select('likes').eq('id', id);
-    // if (error) return { content: `<em>Something went wrong while getting the like count!</em>\n${content}`, id: "null" };
-    // const likes = data[0];
+    const { data, count, error } = await supabase
+        .from('review')
+        .select('*', { count: 'exact', head: true })
+        .eq('article_id', id);
+    // console.log(id, count, error)
+
+    if (error) {
+        return {
+            content: `<em>Something went wrong while getting the like count!</em>\n${content}`,
+            id: 'null',
+            likes: 0,
+        };
+    }
 
     return {
         id,
-        content
+        content,
+        likes: count ?? 0,
     };
 }

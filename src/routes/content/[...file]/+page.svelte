@@ -4,11 +4,12 @@
     export let data;
 
     const id: string = data.id;
+    const count = data.likes
 </script>
 
 <div class='lg:w-2/3 w-full'>
     <div class='mb-2'>
-        <Like {id}/>
+        <Like {id} {count}/>
     </div>
     <div id="content">
         {@html data.content}
