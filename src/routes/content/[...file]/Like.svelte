@@ -1,24 +1,33 @@
 <script lang="ts">
     import Button from '$lib/components/Button.svelte';
     import { supabase } from '$lib/supabaseClient';
+    import { onMount } from 'svelte';
 
     export let id: string;
     export let count = 0;
     let liked = false;
 
-    supabase.auth.getUser().then((user) => {
+    $: [loadLikeStatus(), id];
+    onMount(loadLikeStatus);
+
+    async function loadLikeStatus() {
+        const user = await supabase.auth.getUser();
         if (user.error) return;
-        user = user;
-        return supabase
+
+        const row = await supabase
             .from('review')
-            .select('user_id, article_id')
+            .select('like_status')
             .eq('article_id', id)
             .eq('user_id', user.data.user.id)
             .limit(1);
-    }).then(row => {
-        console.log(row)
-        if (row?.data?.length !== 0) liked = true;
-    });
+        console.log(row);
+
+        if (!row || !row.data || row.data.length === 0 || !row.data[0].like_status) {
+            return liked = false;
+        }
+
+        liked = true;
+    }
 
     function toggle() {
         if (liked) count--;

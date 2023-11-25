@@ -16,7 +16,8 @@ export async function load({ params }) {
     const { data, count, error } = await supabase
         .from('review')
         .select('*', { count: 'exact', head: true })
-        .eq('article_id', id);
+        .eq('article_id', id)
+        .eq('like_status', true);
     // console.log(id, count, error)
 
     if (error) {
@@ -26,6 +27,8 @@ export async function load({ params }) {
             likes: 0,
         };
     }
+
+    console.log(count);
 
     return {
         id,

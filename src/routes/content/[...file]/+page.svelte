@@ -2,17 +2,16 @@
     import Like from "./Like.svelte";
 
     export let data;
-
-    const id: string = data.id;
-    const count = data.likes
+    $: ({ id, likes: count, content } = data);
 </script>
 
 <div class='lg:w-2/3 w-full'>
     <div class='mb-2'>
         <Like {id} {count}/>
+        {count}
     </div>
     <div id="content">
-        {@html data.content}
+        {@html content}
         <br>
     </div>
 </div>
