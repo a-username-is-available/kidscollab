@@ -1,14 +1,15 @@
 <script lang='ts'>
-    import Like from "./Like.svelte";
+    import Favorite from "./Favorite.svelte";
+import Like from "./Like.svelte";
 
     export let data;
     $: ({ id, likes: count, content } = data);
 </script>
 
 <div class='lg:w-2/3 w-full'>
-    <div class='mb-2'>
+    <div class='mb-2 flex gap-3'>
         <Like {id} {count}/>
-        {count}
+        <Favorite {id}/>
     </div>
     <div id="content">
         {@html content}
