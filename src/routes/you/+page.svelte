@@ -5,6 +5,7 @@
     import Panel from '$lib/components/Panel.svelte';
     import Switch from '$lib/components/Switch.svelte';
     import { supabase } from '$lib/supabaseClient';
+    import FavoritedMenu from './FavoritedMenu.svelte';
 
     let selected = 0;
 
@@ -23,13 +24,11 @@
     {#await supabase.auth.getUser() then { data }}
         {#if data.user}
             <h2>Favourited Articles</h2>
-            <ul>
-                <li><a href="/content/Nay-Farn">Nay Farn</a></li>
-            </ul>      
+            <FavoritedMenu />     
 
             <div class="mt-auto self-start"><Button type="outline" click={signOut}>Sign Out</Button></div>
         {:else}
-            <Switch options={['Sign in', 'Sign up']} bind:selected />
+            <Switch options={['Sign in', 'Sign up']} bind:selected/>
 
             <Panel>
                 {#if selected === 0}

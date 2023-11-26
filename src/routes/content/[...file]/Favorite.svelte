@@ -15,13 +15,13 @@
 
         const row = await supabase
             .from('review')
-            .select('like_status')
+            .select('favorite_status')
             .eq('article_id', id)
             .eq('user_id', user.data.user.id)
             .limit(1);
         console.log(row);
 
-        if (!row || !row.data || row.data.length === 0 || !row.data[0].like_status) {
+        if (!row || !row.data || row.data.length === 0 || !row.data[0].favorite_status) {
             return favorited = false;
         }
 
