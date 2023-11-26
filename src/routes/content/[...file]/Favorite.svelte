@@ -4,7 +4,8 @@
     import { onMount } from 'svelte';
 
     export let id: string;
-    let favorited = false;
+    $: favorited = inputToggles % 2 !== 0;
+    let inputToggles = 0;
 
     $: [loadFavoriteStatus(), id];
     onMount(loadFavoriteStatus);
@@ -22,33 +23,39 @@
         console.log(row);
 
         if (!row || !row.data || row.data.length === 0 || !row.data[0].favorite_status) {
-            return favorited = false;
+            return (inputToggles = 0);
         }
 
-        favorited = true;
+        inputToggles = 1;
+    }
+
+    async function tellServer() {
+        const user = await supabase.auth.getUser();
+        if (!user || user.error) return;
+
+        const { data, error } = await supabase
+            .from('review')
+            .insert([{ user_id: user.data.user.id, article_id: id, favorite_status: favorited }]);
+
+        if (error?.code !== '23505') return;
+
+        const profile = await supabase
+            .from('review')
+            .update([{ favorite_status: favorited }])
+            .eq('user_id', user.data.user.id)
+            .eq('article_id', id);
+
+        console.log(profile);
     }
 
     function toggle() {
-        favorited = !favorited;
+        inputToggles++;
+        const togglesAtTimeOfClick = inputToggles;
 
         setTimeout(async () => {
-            const user = await supabase.auth.getUser();
-            if (!user || user.error) return;
-
-            const { data, error } = await supabase
-                .from('review')
-                .insert([{ user_id: user.data.user.id, article_id: id, favorite_status: favorited }]);
-
-            if (error?.code !== '23505') return;
-
-            const profile = await supabase
-                .from('review')
-                .update([{ favorite_status: favorited }])
-                .eq('user_id', user.data.user.id)
-                .eq('article_id', id);
-
-            console.log(profile);
-        }, 1000);
+            if (togglesAtTimeOfClick < inputToggles) return;
+            await tellServer();
+        }, 3000);
     }
 </script>
 
@@ -70,4 +77,3 @@
         {/if}
     </svg>
 </Button>
-

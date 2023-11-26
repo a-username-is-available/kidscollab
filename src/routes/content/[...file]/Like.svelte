@@ -5,7 +5,9 @@
 
     export let id: string;
     export let count = 0;
-    let liked = false;
+
+    $: liked = inputToggles % 2 !== 0;
+    let inputToggles = 0;
 
     $: [loadLikeStatus(), id];
     onMount(loadLikeStatus);
@@ -23,35 +25,42 @@
         console.log(row);
 
         if (!row || !row.data || row.data.length === 0 || !row.data[0].like_status) {
-            return liked = false;
+            return (inputToggles = 0);
         }
 
-        liked = true;
+        inputToggles = 1;
+    }
+
+    async function tellServer() {
+        const user = await supabase.auth.getUser();
+        if (!user || user.error) return;
+
+        const { data, error } = await supabase
+            .from('review')
+            .insert([{ user_id: user.data.user.id, article_id: id, like_status: liked }]);
+
+        if (error?.code !== '23505') return;
+
+        const profile = await supabase
+            .from('review')
+            .update([{ like_status: liked }])
+            .eq('user_id', user.data.user.id)
+            .eq('article_id', id);
+
+        // console.log(profile);
     }
 
     function toggle() {
         if (liked) count--;
         else count++;
-        liked = !liked;
+
+        inputToggles++;
+        const togglesAtTimeOfClick = inputToggles;
 
         setTimeout(async () => {
-            const user = await supabase.auth.getUser();
-            if (!user || user.error) return;
-
-            const { data, error } = await supabase
-                .from('review')
-                .insert([{ user_id: user.data.user.id, article_id: id, like_status: liked }]);
-
-            if (error?.code !== '23505') return;
-
-            const profile = await supabase
-                .from('review')
-                .update([{ like_status: liked }])
-                .eq('user_id', user.data.user.id)
-                .eq('article_id', id);
-
-            console.log(profile);
-        }, 1000);
+            if (togglesAtTimeOfClick < inputToggles) return;
+            await tellServer();
+        }, 3000);
     }
 </script>
 
