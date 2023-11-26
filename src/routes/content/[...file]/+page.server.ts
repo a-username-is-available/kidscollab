@@ -28,7 +28,7 @@ export async function load({ params }) {
         };
     }
 
-    console.log(count);
+    // console.log(count);
 
     return {
         id,

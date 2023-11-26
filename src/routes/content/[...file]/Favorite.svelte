@@ -45,7 +45,7 @@
             .eq('user_id', user.data.user.id)
             .eq('article_id', id);
 
-        console.log(profile);
+        // console.log(profile);
     }
 
     function toggle() {
@@ -55,7 +55,7 @@
         setTimeout(async () => {
             if (togglesAtTimeOfClick < inputToggles) return;
             await tellServer();
-        }, 3000);
+        }, 1000);
     }
 </script>
 

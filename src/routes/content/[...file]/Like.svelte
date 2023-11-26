@@ -22,7 +22,7 @@
             .eq('article_id', id)
             .eq('user_id', user.data.user.id)
             .limit(1);
-        console.log(row);
+        // console.log(row);
 
         if (!row || !row.data || row.data.length === 0 || !row.data[0].like_status) {
             return (inputToggles = 0);
@@ -60,7 +60,7 @@
         setTimeout(async () => {
             if (togglesAtTimeOfClick < inputToggles) return;
             await tellServer();
-        }, 3000);
+        }, 1000);
     }
 </script>
 

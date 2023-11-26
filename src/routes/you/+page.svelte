@@ -24,7 +24,7 @@
     {#await supabase.auth.getUser() then { data }}
         {#if data.user}
             <h2>Favourited Articles</h2>
-            <FavoritedMenu />     
+            <FavoritedMenu/>     
 
             <div class="mt-auto self-start"><Button type="outline" click={signOut}>Sign Out</Button></div>
         {:else}
