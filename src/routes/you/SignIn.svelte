@@ -26,7 +26,7 @@
 <form class="flex flex-col gap-2" on:submit|preventDefault={signIn}>
     <label class="mt-1 leading-3" for="email">Email</label>
     <input bind:value={email} name="email" placeholder="email" type="email">
-    <label class="mt-3 leading-3" for="email">Password</label>
+    <label class="mt-3 leading-3" for="password">Password</label>
     <input bind:value={password} name="password" placeholder="password" type="password">
 
     {#if invalid}
