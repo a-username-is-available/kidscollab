@@ -43,7 +43,7 @@
 
             const profile = await supabase
                 .from('review')
-                .update([{ favorite_staus: favorited }])
+                .update([{ favorite_status: favorited }])
                 .eq('user_id', user.data.user.id)
                 .eq('article_id', id);
 
