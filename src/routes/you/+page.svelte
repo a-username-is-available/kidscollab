@@ -19,10 +19,10 @@
 </script>
 
 <div class="lg:w-2/3 w-full flex flex-col h-full pb-4 gap-2">
-    <h1 class="text-4xl font-bold mb-2">You</h1>
+    <h1>You</h1>
     {#await supabase.auth.getUser() then { data }}
         {#if data.user}
-            <h2 class="text-3xl font-bold mb-1.5">Favourited Articles</h2>
+            <h2>Favourited Articles</h2>
             <ul>
                 <li><a href="/content/Nay-Farn">Nay Farn</a></li>
             </ul>      

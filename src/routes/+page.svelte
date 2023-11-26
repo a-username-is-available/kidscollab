@@ -17,7 +17,7 @@
 </header>
 
 <div class='mr-10 mb-5'>
-    <h2 class="font-bold text-2xl">Acknowledgement Of Country</h2>
+    <h2>Acknowledgement Of Country</h2>
     <p>
         The creators of this website would like to acknowledge the Aboriginal people of Australia
         on which land is rightfully the Indigenous people on which we are on today.
@@ -25,7 +25,7 @@
         We pay our respects to the elders, past, present and emerging.
     </p>
 
-    <h2 class="mt-10 font-bold text-2xl">New Items Welcome!</h2>
+    <h2 class="mt-10">New Items Welcome!</h2>
     <p>
         If you have something to share with us on KidsCollab, please email us at kidscollabaus@gmail.com
     </p>

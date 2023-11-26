@@ -1,6 +1,6 @@
 <script lang='ts'>
     import Favorite from "./Favorite.svelte";
-import Like from "./Like.svelte";
+    import Like from "./Like.svelte";
 
     export let data;
     $: ({ id, likes: count, content } = data);
@@ -18,12 +18,6 @@ import Like from "./Like.svelte";
 </div>
 
 <style lang='postcss'>
-    #content :global(h1){ @apply font-bold text-4xl mb-2; }
-    #content :global(h2){ @apply font-bold text-3xl mb-1.5; }
-    #content :global(h3){ @apply font-bold text-2xl mb-1; }
-    #content :global(h4){ @apply font-bold text-xl; }
-    #content :global(h5){ @apply font-bold text-lg; }
-    #content :global(h6){ @apply font-bold text-base; }
     #content :global(ul) { @apply list-disc ml-5; }
     #content :global(ol) { @apply list-decimal ml-5; }
     #content :global(b), :global(strong){ @apply font-bold; }
